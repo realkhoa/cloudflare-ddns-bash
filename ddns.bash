@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-CONFIG_FILE_PATH="./config.conf"
-LAST_IP_FILE="./last_ip.txt"
-LOG_FILE="./ddns.log"
+# ===== Paths =====
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+CONFIG_FILE_PATH="$SCRIPT_DIR/config.conf"
+LAST_IP_FILE="$SCRIPT_DIR/last_ip.txt"
+LOG_FILE="$SCRIPT_DIR/ddns.log"
 
 # ===== Logging =====
 log() {
@@ -21,7 +24,7 @@ notify_discord() {
 
 # ===== Helper Function =====
 create_cloudflare_config() {
-    CONFIG_FILE="config.conf"
+    CONFIG_FILE="$CONFIG_FILE_PATH"
 
     echo "⚙️ Let's set up your Cloudflare DDNS config."
     echo "You will be asked for:"
